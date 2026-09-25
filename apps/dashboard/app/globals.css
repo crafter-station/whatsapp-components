@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@import "../../../registry/whatsapp/whatsapp.css";
+
+@source "../../../registry";
+
+:root {
+  --page-bg: #fbfbfa;
+  --page-fg: #111b21;
+  --page-muted: #667781;
+  --page-border: rgba(17, 27, 33, 0.1);
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--page-fg);
+  -webkit-font-smoothing: antialiased;
+}

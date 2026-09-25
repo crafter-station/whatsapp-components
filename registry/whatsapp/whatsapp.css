@@ -1,0 +1,130 @@
+/**
+ * WhatsApp component tokens.
+ *
+ * Import once, after Tailwind:
+ *   @import "tailwindcss";
+ *   @import "./whatsapp.css";
+ *
+ * Switch themes with data-wa-theme="dark" | "brand" on any ancestor.
+ * Values mirror `themes.ts`, which tests/themes.test.ts keeps in sync.
+ */
+
+@theme inline {
+  --color-wa-bg: var(--wa-bg);
+  --color-wa-bg-pattern: var(--wa-bg-pattern);
+  --color-wa-panel: var(--wa-panel);
+  --color-wa-panel-text: var(--wa-panel-text);
+  --color-wa-panel-muted: var(--wa-panel-muted);
+  --color-wa-bubble-in: var(--wa-bubble-in);
+  --color-wa-bubble-out: var(--wa-bubble-out);
+  --color-wa-bubble-in-text: var(--wa-bubble-in-text);
+  --color-wa-bubble-out-text: var(--wa-bubble-out-text);
+  --color-wa-surface: var(--wa-surface);
+  --color-wa-border: var(--wa-border);
+  --color-wa-text: var(--wa-text);
+  --color-wa-text-muted: var(--wa-text-muted);
+  --color-wa-link: var(--wa-link);
+  --color-wa-tick: var(--wa-tick);
+  --color-wa-tick-read: var(--wa-tick-read);
+  --color-wa-online: var(--wa-online);
+  --color-wa-accent: var(--wa-accent);
+  --color-wa-accent-text: var(--wa-accent-text);
+  --color-wa-system-bg: var(--wa-system-bg);
+  --color-wa-system-text: var(--wa-system-text);
+
+  --radius-wa-bubble: var(--wa-radius-bubble);
+  --radius-wa-panel: var(--wa-radius-panel);
+  --shadow-wa-bubble: var(--wa-shadow-bubble);
+  --font-wa: var(--wa-font);
+}
+
+:root,
+[data-wa-theme="light"] {
+  --wa-bg: #efeae2;
+  --wa-bg-pattern: rgba(17, 27, 33, 0.06);
+  --wa-panel: #f0f2f5;
+  --wa-panel-text: #111b21;
+  --wa-panel-muted: #667781;
+  --wa-bubble-in: #ffffff;
+  --wa-bubble-out: #d9fdd3;
+  --wa-bubble-in-text: #111b21;
+  --wa-bubble-out-text: #111b21;
+  --wa-surface: #ffffff;
+  --wa-border: rgba(17, 27, 33, 0.08);
+  --wa-text: #111b21;
+  --wa-text-muted: #667781;
+  --wa-link: #027eb5;
+  --wa-tick: #667781;
+  --wa-tick-read: #53bdeb;
+  --wa-online: #25d366;
+  --wa-accent: #00a884;
+  --wa-accent-text: #ffffff;
+  --wa-system-bg: #ffffff;
+  --wa-system-text: #54656f;
+  --wa-radius-bubble: 8px;
+  --wa-radius-panel: 0px;
+  --wa-shadow-bubble: 0 1px 0.5px rgba(11, 20, 26, 0.13);
+  --wa-font:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+}
+
+[data-wa-theme="dark"] {
+  --wa-bg: #0b141a;
+  --wa-bg-pattern: rgba(255, 255, 255, 0.04);
+  --wa-panel: #202c33;
+  --wa-panel-text: #e9edef;
+  --wa-panel-muted: #8696a0;
+  --wa-bubble-in: #202c33;
+  --wa-bubble-out: #005c4b;
+  --wa-bubble-in-text: #e9edef;
+  --wa-bubble-out-text: #e9edef;
+  --wa-surface: #111b21;
+  --wa-border: rgba(233, 237, 239, 0.08);
+  --wa-text: #e9edef;
+  --wa-text-muted: #8696a0;
+  --wa-link: #53bdeb;
+  --wa-tick: #8696a0;
+  --wa-tick-read: #53bdeb;
+  --wa-online: #25d366;
+  --wa-accent: #00a884;
+  --wa-accent-text: #111b21;
+  --wa-system-bg: #182229;
+  --wa-system-text: #8696a0;
+  --wa-radius-bubble: 8px;
+  --wa-radius-panel: 0px;
+  --wa-shadow-bubble: 0 1px 0.5px rgba(11, 20, 26, 0.38);
+  --wa-font:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+}
+
+[data-wa-theme="brand"] {
+  --wa-bg: #ece7df;
+  --wa-bg-pattern: rgba(7, 94, 84, 0.05);
+  --wa-panel: #075e54;
+  --wa-panel-text: #ffffff;
+  --wa-panel-muted: #a7d5cd;
+  --wa-bubble-in: #ffffff;
+  --wa-bubble-out: #d9f8c4;
+  --wa-bubble-in-text: #1a1a1a;
+  --wa-bubble-out-text: #1a1a1a;
+  --wa-surface: #f4fbef;
+  --wa-border: rgba(7, 94, 84, 0.1);
+  --wa-text: #1a1a1a;
+  --wa-text-muted: #8b8b8b;
+  --wa-link: #075e54;
+  --wa-tick: #8b8b8b;
+  --wa-tick-read: #34b7f1;
+  --wa-online: #25d366;
+  --wa-accent: #f2e04f;
+  --wa-accent-text: #1f3d2b;
+  --wa-system-bg: #ffffff;
+  --wa-system-text: #1e8e3e;
+  --wa-radius-bubble: 18px;
+  --wa-radius-panel: 0px;
+  --wa-shadow-bubble: 0 1px 2px rgba(7, 94, 84, 0.1);
+  --wa-font:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+}

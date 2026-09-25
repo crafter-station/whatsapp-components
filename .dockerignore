@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+.next
+**/.next
+.git
+.github
+.agents
+.claude
+skills-lock.json
+*.tsbuildinfo
+.DS_Store
+apps/dashboard/public/r

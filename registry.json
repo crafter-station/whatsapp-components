@@ -1,0 +1,151 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "whatsapp-components",
+  "homepage": "https://whatsapp-components.crafter.run",
+  "items": [
+    {
+      "name": "whatsapp-kit",
+      "type": "registry:block",
+      "title": "WhatsApp Kit",
+      "description": "Every WhatsApp chat component, the shared token themes and the message type model, in one command.",
+      "author": "Crafter Station",
+      "meta": {
+        "tags": ["whatsapp", "chat", "messaging", "commerce"]
+      },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/themes.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/themes.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "registry/whatsapp/format-time.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/format-time.ts"
+        },
+        {
+          "path": "registry/whatsapp/message-ticks.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-ticks.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-meta.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-meta.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-bubble.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-bubble.tsx"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "whatsapp-tokens",
+      "type": "registry:file",
+      "title": "WhatsApp Tokens",
+      "description": "The three themes — real WhatsApp light, real WhatsApp dark, and a rounder brand take — as CSS custom properties plus typed objects.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "theme", "tokens"] },
+      "files": [
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "registry/whatsapp/themes.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/themes.ts"
+        }
+      ]
+    },
+    {
+      "name": "message-ticks",
+      "type": "registry:component",
+      "title": "Message Ticks",
+      "description": "The delivery receipt: clock, one tick, two ticks, two blue ticks.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "status"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["whatsapp-tokens"],
+      "files": [
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/message-ticks.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-ticks.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-meta",
+      "type": "registry:component",
+      "title": "Message Meta",
+      "description": "Timestamp, edited marker and delivery ticks, sized to sit inside a bubble.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "time"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["message-ticks"],
+      "files": [
+        {
+          "path": "registry/whatsapp/format-time.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/format-time.ts"
+        },
+        {
+          "path": "registry/whatsapp/message-meta.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-meta.tsx"
+        }
+      ]
+    },
+    {
+      "name": "message-bubble",
+      "type": "registry:component",
+      "title": "Message Bubble",
+      "description": "An incoming or outgoing bubble with the real WhatsApp tail, and a timestamp that tucks into the last line when it fits.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "bubble"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["message-meta"],
+      "files": [
+        {
+          "path": "registry/whatsapp/message-bubble.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-bubble.tsx"
+        }
+      ]
+    }
+  ]
+}
