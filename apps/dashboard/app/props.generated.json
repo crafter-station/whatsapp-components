@@ -1,113 +1,9 @@
 {
-  "MessageGroupProps": [
-    {
-      "name": "children",
-      "type": "ReactNode",
-      "required": true
-    },
-    {
-      "name": "direction",
-      "type": "MessageDirection",
-      "required": true
-    },
-    {
-      "name": "author",
-      "type": "string",
-      "required": false,
-      "description": "Shown above the first bubble, for group chats."
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    }
-  ],
-  "LocationMessageProps": [
-    {
-      "name": "latitude",
-      "type": "number",
-      "required": true
-    },
-    {
-      "name": "longitude",
-      "type": "number",
-      "required": true
-    },
-    {
-      "name": "address",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "href",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "name",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "previewUrl",
-      "type": "string",
-      "required": false,
-      "description": "A static map image. Without one, a drawn placeholder stands in."
-    }
-  ],
-  "DocumentMessageProps": [
-    {
-      "name": "fileName",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "byteSize",
-      "type": "number",
-      "required": false
-    },
-    {
-      "name": "caption",
-      "type": "ReactNode",
-      "required": false
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "extension",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "href",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "pageCount",
-      "type": "number",
-      "required": false
-    }
-  ],
-  "VoiceNoteProps": [
+  "AudioMessageProps": [
     {
       "name": "durationSeconds",
       "type": "number",
       "required": true
-    },
-    {
-      "name": "senderName",
-      "type": "string",
-      "required": true,
-      "description": "Sender shown beside the waveform, with the little mic badge."
     },
     {
       "name": "className",
@@ -122,36 +18,35 @@
     {
       "name": "playing",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "defaultValue": "false"
     },
     {
       "name": "progress",
       "type": "number",
       "required": false,
-      "description": "Playback position from 0 to 1; bars before it are filled."
-    },
-    {
-      "name": "senderAvatarUrl",
-      "type": "string",
-      "required": false
+      "description": "Playback position from 0 to 1; bars before it are filled.",
+      "defaultValue": "0"
     },
     {
       "name": "unplayed",
       "type": "boolean",
       "required": false,
-      "description": "Turns the unplayed dot on, as WhatsApp marks a new voice note."
+      "description": "Turns the unplayed dot on, as WhatsApp marks a new voice note.",
+      "defaultValue": "false"
     },
     {
       "name": "waveform",
       "type": "number[]",
       "required": false,
-      "description": "Bar heights from 0 to 1. Falls back to a stable stand-in."
+      "description": "Bar heights from 0 to 1. Falls back to a stable stand-in.",
+      "defaultValue": "DEFAULT_WAVEFORM"
     }
   ],
-  "MessageMetaProps": [
+  "ChatAvatarProps": [
     {
-      "name": "timestamp",
-      "type": "Date",
+      "name": "name",
+      "type": "string",
       "required": true
     },
     {
@@ -160,64 +55,24 @@
       "required": false
     },
     {
-      "name": "edited",
-      "type": "boolean",
-      "required": false
-    },
-    {
-      "name": "editedLabel",
-      "type": "string",
+      "name": "size",
+      "type": "number",
       "required": false,
-      "defaultValue": "\"edited\""
+      "description": "Diameter in pixels.",
+      "defaultValue": "40"
     },
     {
-      "name": "status",
-      "type": "MessageStatus",
-      "required": false,
-      "description": "Ticks render only for outgoing messages, matching WhatsApp."
-    },
-    {
-      "name": "timeFormat",
-      "type": "TimeFormatOptions",
-      "required": false
-    }
-  ],
-  "MessageBubbleProps": [
-    {
-      "name": "children",
-      "type": "ReactNode",
-      "required": true
-    },
-    {
-      "name": "direction",
-      "type": "MessageDirection",
-      "required": true
-    },
-    {
-      "name": "className",
+      "name": "src",
       "type": "string",
       "required": false
     },
     {
-      "name": "meta",
-      "type": "ReactNode",
-      "required": false,
-      "description": "Meta is rendered twice on purpose: once hidden inline so the last line of\ntext reserves room for it, once absolutely positioned where it is seen.\nThis is how WhatsApp itself gets the timestamp to sit inside the last line\nwhen it fits and drop to its own line when it does not."
-    },
-    {
-      "name": "tail",
-      "type": "boolean",
-      "required": false,
-      "description": "The little pointer. Turn it off for grouped follow-up messages.",
-      "defaultValue": "true"
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
     }
   ],
-  "MessageListProps": [
-    {
-      "name": "children",
-      "type": "ReactNode",
-      "required": true
-    },
+  "ChatBackgroundProps": [
     {
       "name": "className",
       "type": "string",
@@ -227,24 +82,103 @@
       "name": "pattern",
       "type": "boolean",
       "required": false,
-      "description": "Hide the doodles behind the transcript.",
+      "description": "Hide the doodles and keep the flat wallpaper colour.",
       "defaultValue": "true"
     }
   ],
-  "TypingIndicatorProps": [
+  "ChatHeaderProps": [
+    {
+      "name": "name",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "actions",
+      "type": "ReactNode",
+      "required": false,
+      "description": "Rendered at the far end: call, search, menu."
+    },
+    {
+      "name": "avatarClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "avatarSrc",
+      "type": "string",
+      "required": false
+    },
     {
       "name": "className",
       "type": "string",
       "required": false
     },
     {
-      "name": "label",
+      "name": "leading",
+      "type": "ReactNode",
+      "required": false,
+      "description": "Rendered before the avatar. A back arrow, usually."
+    },
+    {
+      "name": "presence",
+      "type": "PresenceState",
+      "required": false
+    },
+    {
+      "name": "presenceLabel",
       "type": "string",
       "required": false,
-      "defaultValue": "\"Typing\""
+      "description": "Overrides the default label for the current presence."
     }
   ],
-  "SystemMessageProps": [
+  "ChatInputProps": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "required": false,
+      "defaultValue": "\"\""
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onSend",
+      "type": "(value: string) => void",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "(value: string) => void",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false,
+      "defaultValue": "\"Type a message\""
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false,
+      "description": "Controlled value. Omit to let the component hold its own."
+    },
+    {
+      "name": "voice",
+      "type": "boolean",
+      "required": false,
+      "description": "Shows the mic button while the field is empty, as WhatsApp does.",
+      "defaultValue": "true"
+    }
+  ],
+  "ChatWindowProps": [
     {
       "name": "children",
       "type": "ReactNode",
@@ -256,248 +190,15 @@
       "required": false
     },
     {
-      "name": "icon",
-      "type": "ReactNode | null",
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
+      "name": "theme",
+      "type": "WhatsAppThemeId | (string & {})",
       "required": false,
-      "description": "Rendered before the text. Pass `null` to drop the tone's default icon."
-    },
-    {
-      "name": "tone",
-      "type": "SystemNoticeTone",
-      "required": false,
-      "defaultValue": "\"neutral\""
-    }
-  ],
-  "LinkPreviewProps": [
-    {
-      "name": "title",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "url",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "description",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "imageUrl",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "large",
-      "type": "boolean",
-      "required": false,
-      "description": "Large image on top instead of a thumbnail beside the text.",
-      "defaultValue": "false"
-    },
-    {
-      "name": "siteName",
-      "type": "string",
-      "required": false
-    }
-  ],
-  "ProductCardProps": [
-    {
-      "name": "price",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "title",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "action",
-      "type": "ReactNode",
-      "required": false,
-      "description": "A button or link under the price."
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "description",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "imageAlt",
-      "type": "string",
-      "required": false,
-      "defaultValue": "\"\""
-    },
-    {
-      "name": "imageUrl",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "priceClassName",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "stacked",
-      "type": "boolean",
-      "required": false,
-      "description": "Stacks the image above the text instead of beside it.",
-      "defaultValue": "false"
-    }
-  ],
-  "ListMessageProps": [
-    {
-      "name": "body",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "buttonLabel",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "sections",
-      "type": "ListSection[]",
-      "required": true
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "footer",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "onSelect",
-      "type": "(row: ListSectionRow) => void",
-      "required": false
-    },
-    {
-      "name": "onToggle",
-      "type": "() => void",
-      "required": false
-    },
-    {
-      "name": "open",
-      "type": "boolean",
-      "required": false,
-      "description": "Controlled: shows the rows inline instead of only the button.",
-      "defaultValue": "false"
-    },
-    {
-      "name": "title",
-      "type": "string",
-      "required": false
-    }
-  ],
-  "ImageMessageProps": [
-    {
-      "name": "src",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "alt",
-      "type": "string",
-      "required": false,
-      "defaultValue": "\"\""
-    },
-    {
-      "name": "caption",
-      "type": "ReactNode",
-      "required": false
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "flush",
-      "type": "boolean",
-      "required": false,
-      "description": "Bleeds the image past the bubble's padding, as WhatsApp does. Turn it off\nwhen placing the image somewhere other than directly inside a bubble.",
-      "defaultValue": "true"
-    },
-    {
-      "name": "height",
-      "type": "number",
-      "required": false
-    },
-    {
-      "name": "width",
-      "type": "number",
-      "required": false
-    }
-  ],
-  "DateDividerProps": [
-    {
-      "name": "date",
-      "type": "Date",
-      "required": true
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "label",
-      "type": "string",
-      "required": false,
-      "description": "Overrides the derived Today / Yesterday / weekday label."
-    },
-    {
-      "name": "labels",
-      "type": "DateDividerOptions",
-      "required": false
-    },
-    {
-      "name": "now",
-      "type": "Date",
-      "required": false,
-      "description": "Reference point for the relative labels. Defaults to now."
-    }
-  ],
-  "ReactionsProps": [
-    {
-      "name": "reactions",
-      "type": "Reaction[]",
-      "required": true
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "direction",
-      "type": "MessageDirection",
-      "required": false,
-      "description": "Direction of the message being reacted to. Picks the side.",
-      "defaultValue": "\"in\""
-    },
-    {
-      "name": "onToggle",
-      "type": "(emoji: string) => void",
-      "required": false
+      "description": "Sets data-wa-theme on the shell so the tokens resolve for everything inside."
     }
   ],
   "ConversationProps": [
@@ -563,10 +264,10 @@
       "required": false
     }
   ],
-  "ChatAvatarProps": [
+  "DateDividerProps": [
     {
-      "name": "name",
-      "type": "string",
+      "name": "date",
+      "type": "Date",
       "required": true
     },
     {
@@ -575,27 +276,109 @@
       "required": false
     },
     {
-      "name": "size",
-      "type": "number",
+      "name": "label",
+      "type": "string",
       "required": false,
-      "description": "Diameter in pixels.",
-      "defaultValue": "40"
+      "description": "Overrides the derived Today / Yesterday / weekday label."
     },
+    {
+      "name": "labels",
+      "type": "DateDividerOptions",
+      "required": false
+    },
+    {
+      "name": "now",
+      "type": "Date",
+      "required": false,
+      "description": "Reference point for the relative labels. Defaults to now."
+    }
+  ],
+  "DocumentMessageProps": [
+    {
+      "name": "fileName",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "byteSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "caption",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "extension",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "pageCount",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "ImageMessageProps": [
     {
       "name": "src",
       "type": "string",
+      "required": true
+    },
+    {
+      "name": "alt",
+      "type": "string",
+      "required": false,
+      "defaultValue": "\"\""
+    },
+    {
+      "name": "caption",
+      "type": "ReactNode",
       "required": false
     },
     {
-      "name": "style",
-      "type": "CSSProperties",
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "flush",
+      "type": "boolean",
+      "required": false,
+      "description": "Bleeds the image past the bubble's padding, as WhatsApp does. Turn it off\nwhen placing the image somewhere other than directly inside a bubble.",
+      "defaultValue": "true"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number",
       "required": false
     }
   ],
-  "QuickReplyButtonsProps": [
+  "LinkPreviewProps": [
     {
-      "name": "actions",
-      "type": "CtaAction[]",
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "url",
+      "type": "string",
       "required": true
     },
     {
@@ -604,19 +387,169 @@
       "required": false
     },
     {
-      "name": "direction",
-      "type": "\"in\" | \"out\"",
-      "required": false,
-      "description": "Side to align with. Matches the bubble it hangs under.",
-      "defaultValue": "\"in\""
+      "name": "description",
+      "type": "string",
+      "required": false
     },
     {
-      "name": "onSelect",
-      "type": "(action: CtaAction) => void",
+      "name": "imageUrl",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "large",
+      "type": "boolean",
+      "required": false,
+      "description": "Large image on top instead of a thumbnail beside the text.",
+      "defaultValue": "false"
+    },
+    {
+      "name": "siteName",
+      "type": "string",
       "required": false
     }
   ],
-  "ChatWindowProps": [
+  "ListMessageProps": [
+    {
+      "name": "body",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "buttonLabel",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "sections",
+      "type": "ListSection[]",
+      "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "footer",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onSelect",
+      "type": "(row: ListSectionRow) => void",
+      "required": false
+    },
+    {
+      "name": "onToggle",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false,
+      "description": "Controlled: shows the rows inline instead of only the button.",
+      "defaultValue": "false"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "LocationMessageProps": [
+    {
+      "name": "latitude",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "longitude",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "address",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "previewUrl",
+      "type": "string",
+      "required": false,
+      "description": "A static map image. Without one, a drawn placeholder stands in."
+    }
+  ],
+  "MessageBubbleProps": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "direction",
+      "type": "MessageDirection",
+      "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "meta",
+      "type": "ReactNode",
+      "required": false,
+      "description": "Meta is rendered twice on purpose: once hidden inline so the last line of\ntext reserves room for it, once absolutely positioned where it is seen.\nThis is how WhatsApp itself gets the timestamp to sit inside the last line\nwhen it fits and drop to its own line when it does not."
+    },
+    {
+      "name": "tail",
+      "type": "boolean",
+      "required": false,
+      "description": "The little pointer. Turn it off for grouped follow-up messages.",
+      "defaultValue": "true"
+    }
+  ],
+  "MessageGroupProps": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "direction",
+      "type": "MessageDirection",
+      "required": true
+    },
+    {
+      "name": "author",
+      "type": "string",
+      "required": false,
+      "description": "Shown above the first bubble, for group chats."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "MessageListProps": [
     {
       "name": "children",
       "type": "ReactNode",
@@ -628,100 +561,45 @@
       "required": false
     },
     {
-      "name": "style",
-      "type": "CSSProperties",
-      "required": false
-    },
-    {
-      "name": "theme",
-      "type": "WhatsAppThemeId | (string & {})",
-      "required": false,
-      "description": "Sets data-wa-theme on the shell so the tokens resolve for everything inside."
-    }
-  ],
-  "ChatHeaderProps": [
-    {
-      "name": "name",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "actions",
-      "type": "ReactNode",
-      "required": false,
-      "description": "Rendered at the far end: call, search, menu."
-    },
-    {
-      "name": "avatarClassName",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "avatarSrc",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "leading",
-      "type": "ReactNode",
-      "required": false,
-      "description": "Rendered before the avatar. A back arrow, usually."
-    },
-    {
-      "name": "presence",
-      "type": "PresenceState",
-      "required": false
-    },
-    {
-      "name": "presenceLabel",
-      "type": "string",
-      "required": false,
-      "description": "Overrides the default label for the current presence."
-    }
-  ],
-  "PollProps": [
-    {
-      "name": "options",
-      "type": "PollOption[]",
-      "required": true
-    },
-    {
-      "name": "question",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "labels",
-      "type": "{ single?: string; multiple?: string; votes?: (n: number) => string; }",
-      "required": false,
-      "description": "Labels, so the component can speak another language."
-    },
-    {
-      "name": "multiple",
+      "name": "pattern",
       "type": "boolean",
       "required": false,
-      "defaultValue": "false"
+      "description": "Hide the doodles behind the transcript.",
+      "defaultValue": "true"
+    }
+  ],
+  "MessageMetaProps": [
+    {
+      "name": "timestamp",
+      "type": "Date",
+      "required": true
     },
     {
-      "name": "onSelect",
-      "type": "(option: PollOption) => void",
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
-      "name": "totalVotes",
-      "type": "number",
+      "name": "edited",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "editedLabel",
+      "type": "string",
       "required": false,
-      "description": "Overrides the sum of per-option votes."
+      "defaultValue": "\"edited\""
+    },
+    {
+      "name": "status",
+      "type": "MessageStatus",
+      "required": false,
+      "description": "Ticks render only for outgoing messages, matching WhatsApp."
+    },
+    {
+      "name": "timeFormat",
+      "type": "TimeFormatOptions",
+      "required": false
     }
   ],
   "MessageTicksProps": [
@@ -739,79 +617,6 @@
       "name": "label",
       "type": "string",
       "required": false
-    }
-  ],
-  "ReplyQuoteProps": [
-    {
-      "name": "author",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "preview",
-      "type": "string",
-      "required": true
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "direction",
-      "type": "MessageDirection",
-      "required": false,
-      "description": "Direction of the quoted message. Picks the accent colour.",
-      "defaultValue": "\"in\""
-    },
-    {
-      "name": "thumbnailUrl",
-      "type": "string",
-      "required": false
-    }
-  ],
-  "AudioMessageProps": [
-    {
-      "name": "durationSeconds",
-      "type": "number",
-      "required": true
-    },
-    {
-      "name": "className",
-      "type": "string",
-      "required": false
-    },
-    {
-      "name": "onPlayToggle",
-      "type": "() => void",
-      "required": false
-    },
-    {
-      "name": "playing",
-      "type": "boolean",
-      "required": false,
-      "defaultValue": "false"
-    },
-    {
-      "name": "progress",
-      "type": "number",
-      "required": false,
-      "description": "Playback position from 0 to 1; bars before it are filled.",
-      "defaultValue": "0"
-    },
-    {
-      "name": "unplayed",
-      "type": "boolean",
-      "required": false,
-      "description": "Turns the unplayed dot on, as WhatsApp marks a new voice note.",
-      "defaultValue": "false"
-    },
-    {
-      "name": "waveform",
-      "type": "number[]",
-      "required": false,
-      "description": "Bar heights from 0 to 1. Falls back to a stable stand-in.",
-      "defaultValue": "DEFAULT_WAVEFORM"
     }
   ],
   "PhoneFrameProps": [
@@ -856,65 +661,260 @@
       "defaultValue": "320"
     }
   ],
-  "ChatInputProps": [
+  "PollProps": [
+    {
+      "name": "options",
+      "type": "PollOption[]",
+      "required": true
+    },
+    {
+      "name": "question",
+      "type": "string",
+      "required": true
+    },
     {
       "name": "className",
       "type": "string",
       "required": false
     },
     {
-      "name": "defaultValue",
+      "name": "labels",
+      "type": "{ single?: string; multiple?: string; votes?: (n: number) => string; }",
+      "required": false,
+      "description": "Labels, so the component can speak another language."
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "onSelect",
+      "type": "(option: PollOption) => void",
+      "required": false
+    },
+    {
+      "name": "totalVotes",
+      "type": "number",
+      "required": false,
+      "description": "Overrides the sum of per-option votes."
+    }
+  ],
+  "ProductCardProps": [
+    {
+      "name": "price",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "action",
+      "type": "ReactNode",
+      "required": false,
+      "description": "A button or link under the price."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "imageAlt",
       "type": "string",
       "required": false,
       "defaultValue": "\"\""
     },
     {
-      "name": "disabled",
-      "type": "boolean",
-      "required": false
-    },
-    {
-      "name": "onSend",
-      "type": "(value: string) => void",
-      "required": false
-    },
-    {
-      "name": "onValueChange",
-      "type": "(value: string) => void",
-      "required": false
-    },
-    {
-      "name": "placeholder",
+      "name": "imageUrl",
       "type": "string",
-      "required": false,
-      "defaultValue": "\"Type a message\""
+      "required": false
     },
     {
-      "name": "value",
+      "name": "priceClassName",
       "type": "string",
-      "required": false,
-      "description": "Controlled value. Omit to let the component hold its own."
+      "required": false
     },
     {
-      "name": "voice",
+      "name": "stacked",
       "type": "boolean",
       "required": false,
-      "description": "Shows the mic button while the field is empty, as WhatsApp does.",
-      "defaultValue": "true"
+      "description": "Stacks the image above the text instead of beside it.",
+      "defaultValue": "false"
     }
   ],
-  "ChatBackgroundProps": [
+  "QuickReplyButtonsProps": [
+    {
+      "name": "actions",
+      "type": "CtaAction[]",
+      "required": true
+    },
     {
       "name": "className",
       "type": "string",
       "required": false
     },
     {
-      "name": "pattern",
+      "name": "direction",
+      "type": "\"in\" | \"out\"",
+      "required": false,
+      "description": "Side to align with. Matches the bubble it hangs under.",
+      "defaultValue": "\"in\""
+    },
+    {
+      "name": "onSelect",
+      "type": "(action: CtaAction) => void",
+      "required": false
+    }
+  ],
+  "ReactionsProps": [
+    {
+      "name": "reactions",
+      "type": "Reaction[]",
+      "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "direction",
+      "type": "MessageDirection",
+      "required": false,
+      "description": "Direction of the message being reacted to. Picks the side.",
+      "defaultValue": "\"in\""
+    },
+    {
+      "name": "onToggle",
+      "type": "(emoji: string) => void",
+      "required": false
+    }
+  ],
+  "ReplyQuoteProps": [
+    {
+      "name": "author",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "preview",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "direction",
+      "type": "MessageDirection",
+      "required": false,
+      "description": "Direction of the quoted message. Picks the accent colour.",
+      "defaultValue": "\"in\""
+    },
+    {
+      "name": "thumbnailUrl",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "SystemMessageProps": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode | null",
+      "required": false,
+      "description": "Rendered before the text. Pass `null` to drop the tone's default icon."
+    },
+    {
+      "name": "tone",
+      "type": "SystemNoticeTone",
+      "required": false,
+      "defaultValue": "\"neutral\""
+    }
+  ],
+  "TypingIndicatorProps": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "defaultValue": "\"Typing\""
+    }
+  ],
+  "VoiceNoteProps": [
+    {
+      "name": "durationSeconds",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "senderName",
+      "type": "string",
+      "required": true,
+      "description": "Sender shown beside the waveform, with the little mic badge."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onPlayToggle",
+      "type": "() => void",
+      "required": false
+    },
+    {
+      "name": "playing",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "progress",
+      "type": "number",
+      "required": false,
+      "description": "Playback position from 0 to 1; bars before it are filled."
+    },
+    {
+      "name": "senderAvatarUrl",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "unplayed",
       "type": "boolean",
       "required": false,
-      "description": "Hide the doodles and keep the flat wallpaper colour.",
-      "defaultValue": "true"
+      "description": "Turns the unplayed dot on, as WhatsApp marks a new voice note."
+    },
+    {
+      "name": "waveform",
+      "type": "number[]",
+      "required": false,
+      "description": "Bar heights from 0 to 1. Falls back to a stable stand-in."
     }
   ]
 }

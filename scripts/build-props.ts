@@ -21,8 +21,14 @@ export type PropDoc = {
   defaultValue?: string;
 };
 
+/**
+ * Sorted, because readdir order is whatever the filesystem feels like: APFS
+ * and ext4 disagree, so an unsorted walk writes a different key order on a
+ * Mac than on CI and the committed file is never clean on both.
+ */
 const files = readdirSync(registryDir)
   .filter((file) => file.endsWith(".ts") || file.endsWith(".tsx"))
+  .sort()
   .map((file) => join(registryDir, file));
 
 const program = ts.createProgram(files, {
@@ -135,8 +141,15 @@ for (const file of files) {
   }
 }
 
+/** Sorted again on the way out, so the file does not depend on walk order. */
+const sorted = Object.fromEntries(
+  Object.keys(result)
+    .sort()
+    .map((name) => [name, result[name]]),
+);
+
 const output = join(root, "apps/dashboard/app/props.generated.json");
-writeFileSync(output, `${JSON.stringify(result, null, 2)}\n`);
+writeFileSync(output, `${JSON.stringify(sorted, null, 2)}\n`);
 
 const total = Object.values(result).reduce((sum, list) => sum + list.length, 0);
 console.log(
