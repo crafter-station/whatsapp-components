@@ -7,6 +7,13 @@ const root = new URL("../", import.meta.url);
 const items = registry.items;
 const names = new Set(items.map((item) => item.name));
 
+/** Items are self-contained today, so the JSON import types this key away. */
+function registryDependenciesOf(item: (typeof items)[number]): string[] {
+  const value = (item as { registryDependencies?: unknown })
+    .registryDependencies;
+  return Array.isArray(value) ? (value as string[]) : [];
+}
+
 describe("registry.json", () => {
   test("every declared file exists on disk", () => {
     for (const item of items) {
@@ -39,11 +46,56 @@ describe("registry.json", () => {
 
   test("registryDependencies point at items in this registry", () => {
     for (const item of items) {
-      const dependencies =
-        "registryDependencies" in item ? item.registryDependencies : [];
-      for (const dependency of dependencies ?? []) {
+      for (const dependency of registryDependenciesOf(item)) {
         expect(names.has(dependency)).toBe(true);
       }
+    }
+  });
+
+  /** Items are self-contained, so anything that renders must carry the tokens. */
+  test("every item shipping a component also ships whatsapp.css", () => {
+    for (const item of items) {
+      const paths = item.files.map((file) => file.path);
+      if (!paths.some((path) => path.endsWith(".tsx"))) continue;
+      expect({
+        item: item.name,
+        shipsCss: paths.includes("registry/whatsapp/whatsapp.css"),
+      }).toEqual({ item: item.name, shipsCss: true });
+    }
+  });
+
+  test("every item ships the licence", () => {
+    for (const item of items) {
+      expect({
+        item: item.name,
+        licensed: item.files.some((file) => file.path === "LICENSE"),
+      }).toEqual({ item: item.name, licensed: true });
+    }
+  });
+
+  /** A client component keeps its directive wherever it is copied. */
+  test("chat-input is marked as a client component", () => {
+    const source = readFileSync(
+      new URL("registry/whatsapp/chat-input.tsx", root),
+      "utf8",
+    );
+    expect(source.startsWith('"use client";')).toBe(true);
+  });
+
+  /** Everything else must stay server-renderable. */
+  test("no other component opts into the client", () => {
+    const sources = readdirSync(new URL("registry/whatsapp/", root)).filter(
+      (file) => file.endsWith(".tsx") && file !== "chat-input.tsx",
+    );
+    for (const file of sources) {
+      const source = readFileSync(
+        new URL(`registry/whatsapp/${file}`, root),
+        "utf8",
+      );
+      expect({ file, client: source.includes('"use client"') }).toEqual({
+        file,
+        client: false,
+      });
     }
   });
 
@@ -66,9 +118,7 @@ describe("registry.json", () => {
       seen.add(name);
       const item = items.find((candidate) => candidate.name === name);
       const own = new Set(shippedBy.get(name) ?? []);
-      const dependencies =
-        item && "registryDependencies" in item ? item.registryDependencies : [];
-      for (const dependency of dependencies ?? []) {
+      for (const dependency of item ? registryDependenciesOf(item) : []) {
         for (const file of resolve(dependency, seen)) own.add(file);
       }
       return own;

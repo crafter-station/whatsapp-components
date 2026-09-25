@@ -9,9 +9,7 @@
       "title": "WhatsApp Kit",
       "description": "Every WhatsApp chat component, the shared token themes and the message type model, in one command.",
       "author": "Crafter Station",
-      "meta": {
-        "tags": ["whatsapp", "chat", "messaging", "commerce"]
-      },
+      "meta": { "tags": ["whatsapp", "chat", "messaging", "commerce"] },
       "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
@@ -40,9 +38,49 @@
           "target": "@ui/whatsapp/format-time.ts"
         },
         {
-          "path": "registry/whatsapp/message-ticks.tsx",
+          "path": "registry/whatsapp/grouping.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/grouping.ts"
+        },
+        {
+          "path": "registry/whatsapp/chat-window.tsx",
           "type": "registry:ui",
-          "target": "@ui/whatsapp/message-ticks.tsx"
+          "target": "@ui/whatsapp/chat-window.tsx"
+        },
+        {
+          "path": "registry/whatsapp/chat-header.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-header.tsx"
+        },
+        {
+          "path": "registry/whatsapp/chat-avatar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-avatar.tsx"
+        },
+        {
+          "path": "registry/whatsapp/chat-background.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-background.tsx"
+        },
+        {
+          "path": "registry/whatsapp/chat-input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-input.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-list.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-group.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-bubble.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-bubble.tsx"
         },
         {
           "path": "registry/whatsapp/message-meta.tsx",
@@ -50,9 +88,29 @@
           "target": "@ui/whatsapp/message-meta.tsx"
         },
         {
-          "path": "registry/whatsapp/message-bubble.tsx",
+          "path": "registry/whatsapp/message-ticks.tsx",
           "type": "registry:ui",
-          "target": "@ui/whatsapp/message-bubble.tsx"
+          "target": "@ui/whatsapp/message-ticks.tsx"
+        },
+        {
+          "path": "registry/whatsapp/date-divider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/date-divider.tsx"
+        },
+        {
+          "path": "registry/whatsapp/system-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/system-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/typing-indicator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/typing-indicator.tsx"
+        },
+        {
+          "path": "registry/whatsapp/phone-frame.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/phone-frame.tsx"
         },
         {
           "path": "LICENSE",
@@ -63,7 +121,7 @@
     },
     {
       "name": "whatsapp-tokens",
-      "type": "registry:file",
+      "type": "registry:lib",
       "title": "WhatsApp Tokens",
       "description": "The three themes — real WhatsApp light, real WhatsApp dark, and a rounder brand take — as CSS custom properties plus typed objects.",
       "author": "Crafter Station",
@@ -78,23 +136,31 @@
           "path": "registry/whatsapp/themes.ts",
           "type": "registry:file",
           "target": "@ui/whatsapp/themes.ts"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
         }
       ]
     },
     {
-      "name": "message-ticks",
-      "type": "registry:component",
-      "title": "Message Ticks",
-      "description": "The delivery receipt: clock, one tick, two ticks, two blue ticks.",
+      "name": "chat-grouping",
+      "type": "registry:lib",
+      "title": "Chat Grouping",
+      "description": "Collapses consecutive messages from one sender into runs and inserts date dividers. Pure functions, no React.",
       "author": "Crafter Station",
-      "meta": { "tags": ["whatsapp", "chat", "status"] },
-      "dependencies": ["clsx", "tailwind-merge"],
-      "registryDependencies": ["whatsapp-tokens"],
+      "meta": { "tags": ["whatsapp", "chat", "logic"] },
       "files": [
         {
-          "path": "registry/whatsapp/cn.ts",
+          "path": "registry/whatsapp/grouping.ts",
           "type": "registry:file",
-          "target": "@ui/whatsapp/cn.ts"
+          "target": "@ui/whatsapp/grouping.ts"
+        },
+        {
+          "path": "registry/whatsapp/format-time.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/format-time.ts"
         },
         {
           "path": "registry/whatsapp/types.ts",
@@ -102,31 +168,251 @@
           "target": "@ui/whatsapp/types.ts"
         },
         {
-          "path": "registry/whatsapp/message-ticks.tsx",
-          "type": "registry:ui",
-          "target": "@ui/whatsapp/message-ticks.tsx"
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
         }
       ]
     },
     {
-      "name": "message-meta",
+      "name": "chat-window",
       "type": "registry:component",
-      "title": "Message Meta",
-      "description": "Timestamp, edited marker and delivery ticks, sized to sit inside a bubble.",
+      "title": "Chat Window",
+      "description": "The shell: sets the theme, the wallpaper colour and the font for everything inside.",
       "author": "Crafter Station",
-      "meta": { "tags": ["whatsapp", "chat", "time"] },
+      "meta": { "tags": ["whatsapp", "chat", "layout"] },
       "dependencies": ["clsx", "tailwind-merge"],
-      "registryDependencies": ["message-ticks"],
       "files": [
         {
-          "path": "registry/whatsapp/format-time.ts",
-          "type": "registry:file",
-          "target": "@ui/whatsapp/format-time.ts"
+          "path": "registry/whatsapp/chat-window.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-window.tsx"
         },
         {
-          "path": "registry/whatsapp/message-meta.tsx",
+          "path": "registry/whatsapp/themes.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/themes.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "chat-header",
+      "type": "registry:component",
+      "title": "Chat Header",
+      "description": "Avatar, name and presence line, with slots for a back arrow and trailing actions.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "header", "presence"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/chat-header.tsx",
           "type": "registry:ui",
-          "target": "@ui/whatsapp/message-meta.tsx"
+          "target": "@ui/whatsapp/chat-header.tsx"
+        },
+        {
+          "path": "registry/whatsapp/chat-avatar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-avatar.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "chat-avatar",
+      "type": "registry:component",
+      "title": "Chat Avatar",
+      "description": "A round avatar that falls back to the first letter of the name.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "avatar"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/chat-avatar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-avatar.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "chat-background",
+      "type": "registry:component",
+      "title": "Chat Background",
+      "description": "The tiled doodle wallpaper, drawn as a themed CSS mask so it tints with the rest.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "wallpaper"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/chat-background.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-background.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "chat-input",
+      "type": "registry:component",
+      "title": "Chat Input",
+      "description": "The composer. Controlled or uncontrolled, Enter to send, mic while empty.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "input", "composer"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/chat-input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-input.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "message-list",
+      "type": "registry:component",
+      "title": "Message List",
+      "description": "The scrolling transcript, wallpaper included.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "list"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/message-list.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-list.tsx"
+        },
+        {
+          "path": "registry/whatsapp/chat-background.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/chat-background.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "message-group",
+      "type": "registry:component",
+      "title": "Message Group",
+      "description": "Tightens the spacing inside a run of messages from one sender.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "grouping"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/message-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-group.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
         }
       ]
     },
@@ -138,12 +424,247 @@
       "author": "Crafter Station",
       "meta": { "tags": ["whatsapp", "chat", "bubble"] },
       "dependencies": ["clsx", "tailwind-merge"],
-      "registryDependencies": ["message-meta"],
       "files": [
         {
           "path": "registry/whatsapp/message-bubble.tsx",
           "type": "registry:ui",
           "target": "@ui/whatsapp/message-bubble.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "message-meta",
+      "type": "registry:component",
+      "title": "Message Meta",
+      "description": "Timestamp, edited marker and delivery ticks, sized to sit inside a bubble.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "time"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/message-meta.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-meta.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-ticks.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-ticks.tsx"
+        },
+        {
+          "path": "registry/whatsapp/format-time.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/format-time.ts"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "message-ticks",
+      "type": "registry:component",
+      "title": "Message Ticks",
+      "description": "The delivery receipt: clock, one tick, two ticks, two blue ticks.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "status"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/message-ticks.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-ticks.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "date-divider",
+      "type": "registry:component",
+      "title": "Date Divider",
+      "description": "Today, Yesterday, a weekday, then a date — the ladder WhatsApp climbs.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "date"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/date-divider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/date-divider.tsx"
+        },
+        {
+          "path": "registry/whatsapp/format-time.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/format-time.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "system-message",
+      "type": "registry:component",
+      "title": "System Message",
+      "description": "The centred pill: payment confirmed, encryption notice, anything not from a person.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "system", "notice"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/system-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/system-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "typing-indicator",
+      "type": "registry:component",
+      "title": "Typing Indicator",
+      "description": "Three bouncing dots that stop bouncing when the reader asked for less motion.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "typing"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/typing-indicator.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/typing-indicator.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "phone-frame",
+      "type": "registry:component",
+      "title": "Phone Frame",
+      "description": "A device shell to drop a chat into, for landings and product shots.",
+      "author": "Crafter Station",
+      "meta": { "tags": ["whatsapp", "chat", "device", "mockup"] },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/phone-frame.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/phone-frame.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
         }
       ]
     }

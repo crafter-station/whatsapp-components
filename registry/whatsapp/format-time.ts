@@ -36,3 +36,71 @@ export function isSameDay(a: Date, b: Date): boolean {
     a.getDate() === b.getDate()
   );
 }
+
+/** Whole local calendar days from `date` to `now`. Negative for the future. */
+export function calendarDaysAgo(date: Date, now: Date): number {
+  const startOf = (value: Date) =>
+    new Date(value.getFullYear(), value.getMonth(), value.getDate()).getTime();
+  return Math.round((startOf(now) - startOf(date)) / 86_400_000);
+}
+
+export type DateDividerOptions = {
+  today?: string;
+  yesterday?: string;
+  /** Sunday first, matching Date#getDay. */
+  weekdays?: string[];
+  months?: string[];
+};
+
+const WEEKDAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+/**
+ * Today, Yesterday, a weekday within the last week, then a date — the ladder
+ * WhatsApp uses. The year is dropped when it is the current one.
+ */
+export function formatDateDivider(
+  date: Date,
+  now: Date = new Date(),
+  options: DateDividerOptions = {},
+): string {
+  const {
+    today = "Today",
+    yesterday = "Yesterday",
+    weekdays = WEEKDAYS,
+    months = MONTHS,
+  } = options;
+
+  const daysAgo = calendarDaysAgo(date, now);
+  if (daysAgo === 0) return today;
+  if (daysAgo === 1) return yesterday;
+  if (daysAgo > 1 && daysAgo < 7) return weekdays[date.getDay()];
+
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  return date.getFullYear() === now.getFullYear()
+    ? `${day} ${month}`
+    : `${day} ${month} ${date.getFullYear()}`;
+}

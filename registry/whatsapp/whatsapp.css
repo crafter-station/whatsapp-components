@@ -128,3 +128,40 @@
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial,
     sans-serif;
 }
+
+/**
+ * The doodle wallpaper is a mask rather than a background image: the SVG
+ * carries only alpha, and the tint comes from --wa-bg-pattern. That keeps it
+ * theme-aware and avoids per-instance SVG ids, so several themed previews can
+ * sit on one page.
+ */
+.wa-doodle {
+  background-color: var(--wa-bg-pattern);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='22' cy='22' r='8'/%3E%3Cpath d='M16 36c3.5 3.5 10.5 3.5 14 0'/%3E%3Cpath d='M68 14h18a5 5 0 0 1 5 5v11a5 5 0 0 1-5 5h-9l-6 6v-6h-3a5 5 0 0 1-5-5V19a5 5 0 0 1 5-5z'/%3E%3Cpath d='M118 56c-3.5-5.5-12-3.5-12 3 0 5.5 8 10 12 13 4-3 12-7.5 12-13 0-6.5-8.5-8.5-12-3z'/%3E%3Cpath d='M28 84l4.5 9 10 1.2-7.3 6.8 1.8 9.9L28 106l-9 4.9 1.8-9.9L13.5 94l10-1.2z'/%3E%3Cpath d='M62 100h24M62 110h14'/%3E%3Ccircle cx='104' cy='104' r='10'/%3E%3Cpath d='M104 97v7.5l4.5 3.5'/%3E%3Cpath d='M8 62h14M8 70h9'/%3E%3Cpath d='M52 44c4-4 10-4 14 0'/%3E%3C/svg%3E");
+  mask-size: 140px 140px;
+  mask-repeat: repeat;
+}
+
+.wa-typing-dot {
+  animation: wa-typing 1.2s ease-in-out infinite;
+}
+
+@keyframes wa-typing {
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-typing-dot {
+    animation: none;
+    opacity: 0.6;
+  }
+}
