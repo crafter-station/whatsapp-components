@@ -200,7 +200,7 @@
       "name": "whatsapp-tokens",
       "type": "registry:lib",
       "title": "WhatsApp Tokens",
-      "description": "The three themes — real WhatsApp light, real WhatsApp dark, and a rounder brand take — as CSS custom properties plus typed objects.",
+      "description": "The three themes as CSS custom properties plus typed objects: real WhatsApp light, real WhatsApp dark, and a rounder brand take.",
       "author": "Crafter Station",
       "meta": {
         "tags": ["whatsapp", "theme", "tokens"]
@@ -639,7 +639,7 @@
       "name": "date-divider",
       "type": "registry:component",
       "title": "Date Divider",
-      "description": "Today, Yesterday, a weekday, then a date — the ladder WhatsApp climbs.",
+      "description": "Today, Yesterday, a weekday, then a date. The ladder WhatsApp climbs.",
       "author": "Crafter Station",
       "meta": {
         "tags": ["whatsapp", "chat", "date"]
@@ -1080,7 +1080,7 @@
       "name": "product-card",
       "type": "registry:component",
       "title": "Product Card",
-      "description": "Thumbnail, title and price inside a bubble — the card that turns a chat into a storefront.",
+      "description": "Thumbnail, title and price inside a bubble. The card that turns a chat into a storefront.",
       "author": "Crafter Station",
       "meta": {
         "tags": ["whatsapp", "chat", "commerce", "product", "catalog"]
