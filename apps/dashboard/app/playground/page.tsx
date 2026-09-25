@@ -3,7 +3,7 @@ import { SidebarLayout } from "../components/sidebar";
 import { Builder } from "./builder";
 
 export const metadata: Metadata = {
-  title: "Playground · WhatsApp Components",
+  title: "Playground",
   description:
     "Build a WhatsApp conversation and export it as JSX, declarative or composed by hand.",
 };

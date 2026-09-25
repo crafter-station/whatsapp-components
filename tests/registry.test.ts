@@ -145,3 +145,29 @@ describe("registry.json", () => {
     }
   });
 });
+
+describe("README", () => {
+  const readme = readFileSync(new URL("README.md", root), "utf8");
+
+  /** The catalogue in the README is hand-written and goes stale in silence. */
+  test("names every registry item", () => {
+    for (const item of items) {
+      expect({
+        item: item.name,
+        inReadme: readme.includes(`\`${item.name}\``),
+      }).toEqual({ item: item.name, inReadme: true });
+    }
+  });
+
+  test("quotes the real file count for the kit", () => {
+    const kit = items.find((item) => item.name === "whatsapp-kit");
+    expect(readme).toContain(`writes ${kit?.files.length} files`);
+  });
+
+  test("lists the dependencies the kit actually installs", () => {
+    const kit = items.find((item) => item.name === "whatsapp-kit");
+    for (const dependency of kit?.dependencies ?? []) {
+      expect(readme).toContain(`\`${dependency}\``);
+    }
+  });
+});
