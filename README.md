@@ -2,7 +2,7 @@
 
 Copy-paste WhatsApp chat components for [shadcn](https://ui.shadcn.com). Real WhatsApp tokens, three themes, React 19 — no runtime package.
 
-**[whatsapp-components.crafter.run](https://whatsapp-components.crafter.run)**
+**[whatsapp-components.crafter.run](https://whatsapp-components.crafter.run)** · [Components](https://whatsapp-components.crafter.run/docs/whatsapp-kit) · [Playground](https://whatsapp-components.crafter.run/playground)
 
 ```bash
 npx shadcn@latest add https://whatsapp-components.crafter.run/r/whatsapp-kit.json

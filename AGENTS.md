@@ -8,6 +8,9 @@
 - Presentation components stay server-renderable. Add `"use client"` only to components that need state or events.
 - `themes.ts` is the source of truth for tokens; `whatsapp.css` mirrors it so a copied component works with no provider. `tests/themes.test.ts` enforces the mirror — update both or the build fails.
 - Every new file in `registry/whatsapp` must be shipped by an item in `registry.json`, and any `./x` import must resolve through that item or its `registryDependencies`. `tests/registry.test.ts` enforces both.
+- Registry items are self-contained: each ships every file it needs and declares no `registryDependencies`, so `shadcn add <one-component>` works without cross-registry name resolution.
+- Tokens ship as `whatsapp.css` plus a one-line `@import`, not through the registry's `cssVars`. That was measured, not assumed: `cssVars.theme`, `cssVars.light`/`dark` and plain `css` selectors all apply correctly in shadcn 4.21, but `css: {"@theme inline": …}` aborts `add` with `Unknown word var`. Injecting everything would mean expressing the doodle mask and keyframes as JS objects and making `whatsapp.css` a build artifact — a lot of machinery to save the consumer one import line.
+- Docs data is generated: `bun run generate` rebuilds the props table from the component source with the TypeScript checker, snapshots the demo sources, and builds the registry. The generated files are committed and CI fails on a dirty tree.
 - Verification before every push: `bun test`, `bun run typecheck`, `bun run lint`, `bun run build`. No automatic Playwright gates.
 - Deploy: commit per logical change, push to `main`, then `vps app deploy` and confirm the domain returns 200. The webhook alone is fire-and-forget and hides failed builds.
 - Production: https://whatsapp-components.crafter.run — app `Km29AXY8PluVcBUThJeQe`, environment `cUnyPupMXk8KOz1FF9ozg`.
