@@ -7,6 +7,7 @@ import { PhoneFrame } from "@/registry/whatsapp/phone-frame";
 import { whatsappThemeList } from "@/registry/whatsapp/themes";
 import { TypingIndicator } from "@/registry/whatsapp/typing-indicator";
 import { demoConversation } from "./demo-conversation";
+import { richConversation } from "./rich-conversation";
 import { Transcript } from "./transcript";
 
 const INSTALL =
@@ -64,6 +65,31 @@ export default function Page() {
                 </p>
               </figcaption>
             </figure>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-20">
+        <SectionTitle>Rich content</SectionTitle>
+        <p className="mt-2 max-w-2xl text-[var(--page-muted)]">
+          Photos, voice notes, documents, locations, unfurled links, quoted
+          replies and reactions. Quoting and reacting live on the message
+          envelope, not on the content — so they work the same whatever the
+          bubble holds.
+        </p>
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          {(["light", "dark"] as const).map((theme) => (
+            <ChatWindow
+              key={theme}
+              theme={theme}
+              className="h-[620px] overflow-hidden rounded-xl border border-[var(--page-border)]"
+            >
+              <ChatHeader name="Camila" presence="typing" />
+              <MessageList>
+                <Transcript items={richConversation} />
+              </MessageList>
+              <ChatInput placeholder="Escribe un mensaje" />
+            </ChatWindow>
           ))}
         </div>
       </section>
