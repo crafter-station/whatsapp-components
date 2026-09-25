@@ -6,7 +6,7 @@ import { PhoneFrame } from "@/registry/whatsapp/phone-frame";
 
 export default function Demo() {
   return (
-    <div className="flex flex-wrap justify-center gap-8">
+    <div className="flex flex-wrap justify-center gap-8 [&>*]:min-w-0 [&>*]:max-w-full">
       <PhoneFrame width={260} ratio={1.9}>
         <ChatWindow className="pt-6">
           <ChatHeader name="Valeria" presence="online" />

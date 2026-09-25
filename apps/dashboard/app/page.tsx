@@ -70,7 +70,13 @@ export default function Page() {
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-10">
           {whatsappThemeList.map((theme) => (
-            <figure key={theme.id} className="flex flex-col items-center gap-3">
+            // min-w-0 so the frame's max-w-full has something to clamp to:
+            // its containing block is this figure, which otherwise sizes to
+            // the frame's own content width.
+            <figure
+              key={theme.id}
+              className="flex min-w-0 max-w-full flex-col items-center gap-3"
+            >
               <PhoneFrame width={304} ratio={1.95}>
                 <ChatWindow theme={theme.id} className="pt-6">
                   <ChatHeader

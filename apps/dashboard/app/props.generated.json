@@ -852,7 +852,7 @@
       "name": "width",
       "type": "number",
       "required": false,
-      "description": "Screen width in pixels; the height follows from `ratio`.",
+      "description": "Target screen width in pixels. The frame shrinks below it in a narrow\ncolumn rather than overflowing; the height follows from `ratio`.",
       "defaultValue": "320"
     }
   ],

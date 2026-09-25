@@ -94,8 +94,13 @@ export function Builder() {
   };
 
   return (
-    <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_380px]">
-      <div className="space-y-4">
+    /*
+      grid-cols-1 is not redundant: without an explicit track the single
+      column sizes to max-content, and the code block's longest line drags
+      the whole builder past the viewport on a phone.
+    */
+    <div className="grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1fr)_380px]">
+      <div className="min-w-0 space-y-4">
         <div className="flex flex-wrap items-center gap-2">
           <Button
             onClick={() =>
@@ -164,7 +169,7 @@ export function Builder() {
               key={item.id}
               className="rounded-lg border border-[var(--page-border)] bg-white p-3"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded bg-black/[0.05] px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wide text-[var(--page-muted)]">
                   {item.kind === "message" ? item.content.type : item.kind}
                 </span>

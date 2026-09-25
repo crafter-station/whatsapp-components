@@ -52,14 +52,54 @@ export function Sidebar() {
   );
 }
 
-/** The two-column shell shared by the docs pages and the playground. */
+/**
+ * The two-column shell shared by the docs pages and the playground.
+ *
+ * Below lg the rail becomes a disclosure rather than a drawer: a `details`
+ * element needs no client component and no state, and only one of the two
+ * copies is ever in the accessibility tree because the other is display:none.
+ */
 export function SidebarLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="mx-auto flex max-w-[1180px] gap-10 px-6 py-10">
-      <aside className="sticky top-10 hidden h-[calc(100vh-5rem)] w-56 shrink-0 overflow-y-auto overflow-x-hidden lg:block">
-        <Sidebar />
-      </aside>
-      <div className="min-w-0 flex-1">{children}</div>
+    <div className="mx-auto max-w-[1180px] px-6 py-10">
+      <details className="group mb-8 overflow-hidden rounded-lg border border-[var(--page-border)] bg-white lg:hidden">
+        <summary className="cursor-pointer list-none px-4 py-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
+          <span className="flex items-center justify-between gap-3">
+            Browse components
+            <Chevron />
+          </span>
+        </summary>
+        <div className="max-h-[60vh] overflow-y-auto border-t border-[var(--page-border)] px-2 py-4">
+          <Sidebar />
+        </div>
+      </details>
+
+      <div className="flex gap-10">
+        <aside className="sticky top-10 hidden h-[calc(100vh-5rem)] w-56 shrink-0 overflow-y-auto overflow-x-hidden lg:block">
+          <Sidebar />
+        </aside>
+        <div className="min-w-0 flex-1">{children}</div>
+      </div>
     </div>
+  );
+}
+
+function Chevron() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      aria-hidden="true"
+      focusable="false"
+      className="shrink-0 text-[var(--page-muted)] transition-transform duration-150 group-open:rotate-180"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 9l6 6 6-6" />
+    </svg>
   );
 }
