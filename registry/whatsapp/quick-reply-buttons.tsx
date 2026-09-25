@@ -4,7 +4,7 @@ import type { CtaAction } from "./types";
 export type QuickReplyButtonsProps = {
   actions: CtaAction[];
   onSelect?: (action: CtaAction) => void;
-  /** Side to align with — matches the bubble it hangs under. */
+  /** Side to align with. Matches the bubble it hangs under. */
   direction?: "in" | "out";
   className?: string;
 };

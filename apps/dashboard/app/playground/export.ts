@@ -90,7 +90,7 @@ function contentJsx(content: MessageContent): string {
         content.imageUrl ? ` imageUrl=${quote(content.imageUrl)}` : ""
       } />`;
     default:
-      return `{/* ${content.type} — see the ${content.type} component */}`;
+      return `{/* ${content.type}: see the ${content.type} component */}`;
   }
 }
 

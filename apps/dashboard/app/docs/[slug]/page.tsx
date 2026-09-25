@@ -20,7 +20,7 @@ export async function generateMetadata({
   const item = docItemsByName.get(slug);
   if (!item) return {};
   return {
-    title: `${item.title} — WhatsApp Components`,
+    title: `${item.title} · WhatsApp Components`,
     description: item.description,
   };
 }

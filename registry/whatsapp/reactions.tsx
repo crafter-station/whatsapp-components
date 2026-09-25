@@ -3,7 +3,7 @@ import type { MessageDirection, Reaction } from "./types";
 
 export type ReactionsProps = {
   reactions: Reaction[];
-  /** Direction of the message being reacted to — it picks the side. */
+  /** Direction of the message being reacted to. Picks the side. */
   direction?: MessageDirection;
   onToggle?: (emoji: string) => void;
   className?: string;

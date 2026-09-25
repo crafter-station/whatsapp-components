@@ -23,18 +23,20 @@ const INSTALL =
 export default function Page() {
   return (
     <main className="mx-auto max-w-[1180px] px-6 py-16">
-      <header className="max-w-2xl">
+      <header>
         <p className="font-mono text-xs uppercase tracking-widest text-[var(--page-muted)]">
           Crafter Station
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight">
           WhatsApp Components
         </h1>
-        <p className="mt-4 text-lg leading-relaxed text-[var(--page-muted)]">
-          Copy-paste chat components for shadcn. Real WhatsApp tokens, three
-          themes, React 19 — no runtime package.
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--page-muted)]">
+          A WhatsApp chat in React that passes for the real thing. Tokens
+          sampled from the app, bubble tails, blue ticks, three themes. The code
+          lands in your repo, not your node_modules.
         </p>
-        <div className="mt-6 max-w-xl">
+        {/* Wide enough for the whole command: the prose is capped, this is not. */}
+        <div className="mt-6 max-w-3xl">
           <InstallBlock command={INSTALL} />
         </div>
         <nav className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
@@ -116,7 +118,7 @@ export default function Page() {
         <p className="mt-2 max-w-2xl text-[var(--page-muted)]">
           Photos, voice notes, documents, locations, unfurled links, quoted
           replies and reactions. Quoting and reacting live on the message
-          envelope, not on the content — so they work the same whatever the
+          envelope, not on the content, so they work the same whatever the
           bubble holds.
         </p>
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
@@ -139,7 +141,7 @@ export default function Page() {
       <section className="mt-20">
         <SectionTitle>Interactive</SectionTitle>
         <p className="mt-2 max-w-2xl text-[var(--page-muted)]">
-          Quick replies, list messages, CTAs and polls. All controlled — no
+          Quick replies, list messages, CTAs and polls. All controlled: no
           component holds hidden state, so the transcript stays yours.
         </p>
         <div className="mt-6 grid gap-6 lg:grid-cols-2">

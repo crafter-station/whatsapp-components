@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "WhatsApp Components",
   description:
-    "Copy-paste WhatsApp chat components for shadcn. Real WhatsApp tokens, three themes, React 19.",
+    "A WhatsApp chat in React that passes for the real thing. Tokens sampled from the app, bubble tails, blue ticks, three themes. Copy-paste components for shadcn.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

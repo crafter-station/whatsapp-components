@@ -1,6 +1,6 @@
 # WhatsApp Components
 
-Copy-paste WhatsApp chat components for [shadcn](https://ui.shadcn.com). Real WhatsApp tokens, three themes, React 19 — no runtime package.
+A WhatsApp chat in React that passes for the real thing. Tokens sampled from the app, bubble tails, blue ticks, three themes. Copy-paste components for [shadcn](https://ui.shadcn.com): the code lands in your repo, not your node_modules.
 
 **[whatsapp-components.crafter.run](https://whatsapp-components.crafter.run)** · [Components](https://whatsapp-components.crafter.run/docs/whatsapp-kit) · [Playground](https://whatsapp-components.crafter.run/playground)
 
@@ -22,7 +22,7 @@ Three themes ship as CSS custom properties. Set `data-wa-theme` on any ancestor:
 | --- | --- |
 | `light` | WhatsApp Web's light theme, sampled |
 | `dark` | WhatsApp Web's dark theme, sampled |
-| `brand` | Rounder corners, deeper teal — for product shots |
+| `brand` | Rounder corners, deeper teal, for product shots |
 
 ```tsx
 <div data-wa-theme="dark">
@@ -50,7 +50,7 @@ bun run lint
 bun run build
 ```
 
-`registry/whatsapp` is the canonical source. The dashboard imports it directly — there is no build step between the two, so what you see on the site is exactly what `shadcn add` writes into your project.
+`registry/whatsapp` is the canonical source. The dashboard imports it directly, with no build step between the two, so what you see on the site is exactly what `shadcn add` writes into your project.
 
 ## License
 

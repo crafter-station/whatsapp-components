@@ -10,9 +10,9 @@ export type ChatHeaderProps = {
   presence?: PresenceState;
   /** Overrides the default label for the current presence. */
   presenceLabel?: string;
-  /** Rendered before the avatar — a back arrow, usually. */
+  /** Rendered before the avatar. A back arrow, usually. */
   leading?: ReactNode;
-  /** Rendered at the far end — call, search, menu. */
+  /** Rendered at the far end: call, search, menu. */
   actions?: ReactNode;
   className?: string;
 };

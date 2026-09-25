@@ -491,7 +491,7 @@
       "name": "direction",
       "type": "MessageDirection",
       "required": false,
-      "description": "Direction of the message being reacted to — it picks the side.",
+      "description": "Direction of the message being reacted to. Picks the side.",
       "defaultValue": "\"in\""
     },
     {
@@ -607,7 +607,7 @@
       "name": "direction",
       "type": "\"in\" | \"out\"",
       "required": false,
-      "description": "Side to align with — matches the bubble it hangs under.",
+      "description": "Side to align with. Matches the bubble it hangs under.",
       "defaultValue": "\"in\""
     },
     {
@@ -649,7 +649,7 @@
       "name": "actions",
       "type": "ReactNode",
       "required": false,
-      "description": "Rendered at the far end — call, search, menu."
+      "description": "Rendered at the far end: call, search, menu."
     },
     {
       "name": "avatarClassName",
@@ -670,7 +670,7 @@
       "name": "leading",
       "type": "ReactNode",
       "required": false,
-      "description": "Rendered before the avatar — a back arrow, usually."
+      "description": "Rendered before the avatar. A back arrow, usually."
     },
     {
       "name": "presence",
@@ -761,7 +761,7 @@
       "name": "direction",
       "type": "MessageDirection",
       "required": false,
-      "description": "Direction of the quoted message — it picks the accent colour.",
+      "description": "Direction of the quoted message. Picks the accent colour.",
       "defaultValue": "\"in\""
     },
     {

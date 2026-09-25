@@ -4,7 +4,7 @@ import type { MessageDirection } from "./types";
 export type ReplyQuoteProps = {
   author: string;
   preview: string;
-  /** Direction of the quoted message — it picks the accent colour. */
+  /** Direction of the quoted message. Picks the accent colour. */
   direction?: MessageDirection;
   thumbnailUrl?: string;
   className?: string;
