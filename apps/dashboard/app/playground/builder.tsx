@@ -12,6 +12,7 @@ import type {
   MessageStatus,
 } from "@/registry/whatsapp/types";
 import { CopyButton } from "../components/copy-button";
+import { Highlight } from "../components/highlight";
 import { toCompoundSource, toDeclarativeSource } from "./export";
 
 const at = (hour: number, minute: number) =>
@@ -278,7 +279,7 @@ export function Builder() {
           </div>
           <pre className="max-h-[420px] overflow-auto px-4 py-3">
             <code className="font-mono text-[12px] leading-[19px] text-[#e9edef]">
-              {source}
+              <Highlight code={source} />
             </code>
           </pre>
         </div>

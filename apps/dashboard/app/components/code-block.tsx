@@ -1,4 +1,5 @@
 import { CopyButton } from "./copy-button";
+import { Highlight } from "./highlight";
 
 export function CodeBlock({
   code,
@@ -21,7 +22,7 @@ export function CodeBlock({
       </div>
       <pre className="overflow-x-auto px-4 py-3">
         <code className="font-mono text-[12.5px] leading-[20px] text-[#e9edef]">
-          {code}
+          <Highlight code={code} />
         </code>
       </pre>
     </div>

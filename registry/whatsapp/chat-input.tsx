@@ -64,7 +64,12 @@ export function ChatInput({
         <EmojiIcon />
       </IconButton>
 
-      <div className="flex min-w-0 flex-1 items-end rounded-[20px] bg-wa-bubble-in px-3 py-2">
+      <div className="flex min-w-0 flex-1 items-end gap-1 rounded-[20px] bg-wa-bubble-in py-1.5 pl-3 pr-1.5">
+        {/*
+          flex-1 and min-w-0, not w-full: a textarea's intrinsic width is its
+          cols attribute, so as a flex item it keeps ~20em of basis and gets
+          shrunk by the attach button instead of filling the row.
+        */}
         <textarea
           rows={1}
           value={text}
@@ -72,9 +77,9 @@ export function ChatInput({
           placeholder={placeholder}
           onChange={(event) => update(event.target.value)}
           onKeyDown={onKeyDown}
-          className="max-h-24 w-full resize-none bg-transparent text-[15px] leading-5 text-wa-text outline-none placeholder:text-wa-text-muted disabled:opacity-60"
+          className="max-h-24 min-w-0 flex-1 resize-none bg-transparent py-1 text-[15px] leading-5 text-wa-text outline-none placeholder:text-wa-text-muted disabled:opacity-60"
         />
-        <IconButton label="Attach" className="-mr-1 shrink-0">
+        <IconButton label="Attach" className="h-7 w-7 shrink-0">
           <AttachIcon />
         </IconButton>
       </div>
