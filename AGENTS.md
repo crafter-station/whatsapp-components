@@ -10,4 +10,5 @@
 - Every new file in `registry/whatsapp` must be shipped by an item in `registry.json`, and any `./x` import must resolve through that item or its `registryDependencies`. `tests/registry.test.ts` enforces both.
 - Verification before every push: `bun test`, `bun run typecheck`, `bun run lint`, `bun run build`. No automatic Playwright gates.
 - Deploy: commit per logical change, push to `main`, then `vps app deploy` and confirm the domain returns 200. The webhook alone is fire-and-forget and hides failed builds.
-- Production: https://whatsapp-components.crafter.run
+- Production: https://whatsapp-components.crafter.run — app `Km29AXY8PluVcBUThJeQe`, environment `cUnyPupMXk8KOz1FF9ozg`.
+- `crafter.run` has no wildcard DNS. The record is a CNAME to `vps.crafter.run`, created with `crafters domain add <sub> --target vps.crafter.run`. `vps domain add` only wires Traefik; it does not touch DNS. If Traefik is ever serving `TRAEFIK DEFAULT CERT`, the ACME attempt failed while DNS was missing — delete the domain and re-add it, then redeploy.
