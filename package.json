@@ -6,8 +6,11 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "bun run registry:build && bun run --filter @whatsapp-components/dashboard dev",
-    "build": "bun run registry:build && bun run --filter @whatsapp-components/dashboard build",
+    "dev": "bun run generate && bun run --filter @whatsapp-components/dashboard dev",
+    "build": "bun run generate && bun run --filter @whatsapp-components/dashboard build",
+    "generate": "bun run props:build && bun run demos:build && bun run registry:build",
+    "props:build": "bun run scripts/build-props.ts",
+    "demos:build": "bun run scripts/build-demos.ts",
     "registry:build": "shadcn build registry.json --output apps/dashboard/public/r",
     "typecheck": "tsc --noEmit && bun run --filter @whatsapp-components/dashboard typecheck",
     "lint": "biome check .",

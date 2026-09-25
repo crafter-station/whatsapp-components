@@ -18,3 +18,6 @@ jobs:
       - run: bun run typecheck
       - run: bun run lint
       - run: bun run build
+      # The committed props table is generated from the component source.
+      # A dirty tree here means someone changed a prop and did not regenerate.
+      - run: git diff --exit-code

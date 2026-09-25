@@ -13,7 +13,7 @@ COPY apps/dashboard/package.json ./apps/dashboard/
 RUN bun install --frozen-lockfile
 
 COPY . .
-RUN bun run registry:build
+RUN bun run generate
 RUN bun run --filter @whatsapp-components/dashboard build
 
 FROM node:24-alpine AS runtime

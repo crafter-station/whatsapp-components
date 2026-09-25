@@ -3,8 +3,10 @@
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
     "incremental": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
+      "@/registry.json": ["../../registry.json"],
       "@/registry/*": ["../../registry/*"]
     }
   },

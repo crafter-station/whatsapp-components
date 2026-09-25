@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ChatHeader } from "@/registry/whatsapp/chat-header";
 import { ChatInput } from "@/registry/whatsapp/chat-input";
 import { ChatWindow } from "@/registry/whatsapp/chat-window";
@@ -10,7 +11,9 @@ import { QuickReplyButtons } from "@/registry/whatsapp/quick-reply-buttons";
 import { SystemMessage } from "@/registry/whatsapp/system-message";
 import { whatsappThemeList } from "@/registry/whatsapp/themes";
 import { TypingIndicator } from "@/registry/whatsapp/typing-indicator";
+import { InstallBlock } from "./components/code-block";
 import { demoConversation } from "./demo-conversation";
+import { DOC_SECTIONS, docItemsByName } from "./lib/docs";
 import { renderProductLead } from "./render-product-lead";
 import { richConversation } from "./rich-conversation";
 
@@ -31,9 +34,29 @@ export default function Page() {
           Copy-paste chat components for shadcn. Real WhatsApp tokens, three
           themes, React 19 — no runtime package.
         </p>
-        <code className="mt-6 inline-block max-w-full overflow-x-auto rounded-md border border-[var(--page-border)] bg-white px-3 py-2 font-mono text-sm">
-          {INSTALL}
-        </code>
+        <div className="mt-6 max-w-xl">
+          <InstallBlock command={INSTALL} />
+        </div>
+        <nav className="mt-6 flex flex-wrap gap-3 text-sm font-medium">
+          <Link
+            href="/docs/whatsapp-kit"
+            className="rounded-md bg-[var(--page-fg)] px-3 py-1.5 text-white"
+          >
+            Components
+          </Link>
+          <Link
+            href="/playground"
+            className="rounded-md border border-[var(--page-border)] px-3 py-1.5 hover:bg-black/[0.03]"
+          >
+            Playground
+          </Link>
+          <a
+            href="https://github.com/crafter-station/whatsapp-components"
+            className="rounded-md border border-[var(--page-border)] px-3 py-1.5 hover:bg-black/[0.03]"
+          >
+            GitHub
+          </a>
+        </nav>
       </header>
 
       <section className="mt-16">
@@ -206,9 +229,44 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="mt-20">
+        <SectionTitle>Every component</SectionTitle>
+        <div className="mt-6 space-y-8">
+          {DOC_SECTIONS.map((section) => (
+            <div key={section.title}>
+              <h3 className="text-[13px] font-semibold">{section.title}</h3>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                {section.items.map((name) => {
+                  const item = docItemsByName.get(name);
+                  if (!item) return null;
+                  return (
+                    <li key={name}>
+                      <Link
+                        href={`/docs/${name}`}
+                        className="block h-full rounded-lg border border-[var(--page-border)] bg-white p-3 hover:border-[var(--page-muted)]"
+                      >
+                        <p className="text-sm font-medium">{item.title}</p>
+                        <p className="mt-1 line-clamp-2 text-[12.5px] leading-[17px] text-[var(--page-muted)]">
+                          {item.description}
+                        </p>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <footer className="mt-20 border-t border-[var(--page-border)] pt-6 text-sm text-[var(--page-muted)]">
-        Wave 3 — every component is in. Per-component docs pages and the
-        conversation playground land next.
+        MIT ·{" "}
+        <a
+          href="https://github.com/crafter-station/whatsapp-components"
+          className="underline"
+        >
+          crafter-station/whatsapp-components
+        </a>
       </footer>
     </main>
   );
