@@ -7,12 +7,6 @@ const at = (hour: number, minute: number) =>
 export const demoConversation: ChatItem[] = [
   { kind: "date", id: "day", date: at(0, 0), label: "Today" },
   {
-    kind: "system",
-    id: "encryption",
-    tone: "encryption",
-    text: "Messages are end-to-end encrypted.",
-  },
-  {
     kind: "message",
     id: "m1",
     direction: "in",
@@ -26,37 +20,35 @@ export const demoConversation: ChatItem[] = [
     timestamp: at(20, 2),
     status: "read",
     content: {
-      type: "text",
-      text: "¡Sí! Nos queda en stock 😍 Te lo muestro:",
+      type: "product",
+      title: "Perfume Violeta · 50 ml",
+      price: "$ 65.000",
+      imageUrl: "/perfume.svg",
+      imageAlt: "Perfume Violeta",
+      caption: "¡Sí! Nos queda en stock 😍 Te lo muestro:",
     },
   },
   {
     kind: "message",
     id: "m3",
-    direction: "out",
-    timestamp: at(20, 3),
-    status: "read",
-    content: { type: "text", text: "Perfume Violeta · 50 ml — $ 65.000" },
-  },
-  {
-    kind: "message",
-    id: "m4",
     direction: "in",
     timestamp: at(20, 5),
     content: { type: "text", text: "¡Listo, ya pagué!" },
   },
-  {
-    kind: "system",
-    id: "paid",
-    tone: "success",
-    text: "Pago confirmado",
-  },
+  { kind: "system", id: "paid", tone: "success", text: "Pago confirmado" },
   {
     kind: "message",
-    id: "m5",
+    id: "m4",
     direction: "out",
     timestamp: at(20, 6),
     status: "delivered",
-    content: { type: "text", text: "Perfecto, lo despachamos hoy mismo 📦" },
+    content: {
+      type: "cta",
+      body: "Perfecto, lo despachamos hoy mismo 📦",
+      actions: [
+        { id: "track", label: "Seguir mi pedido", kind: "url", url: "#" },
+        { id: "invoice", label: "Copiar N.° de orden", kind: "copy" },
+      ],
+    },
   },
 ];

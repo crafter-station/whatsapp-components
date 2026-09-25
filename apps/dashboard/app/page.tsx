@@ -1,14 +1,18 @@
 import { ChatHeader } from "@/registry/whatsapp/chat-header";
 import { ChatInput } from "@/registry/whatsapp/chat-input";
 import { ChatWindow } from "@/registry/whatsapp/chat-window";
+import { Conversation } from "@/registry/whatsapp/conversation";
 import { MessageBubble } from "@/registry/whatsapp/message-bubble";
 import { MessageList } from "@/registry/whatsapp/message-list";
 import { PhoneFrame } from "@/registry/whatsapp/phone-frame";
+import { Poll } from "@/registry/whatsapp/poll";
+import { QuickReplyButtons } from "@/registry/whatsapp/quick-reply-buttons";
+import { SystemMessage } from "@/registry/whatsapp/system-message";
 import { whatsappThemeList } from "@/registry/whatsapp/themes";
 import { TypingIndicator } from "@/registry/whatsapp/typing-indicator";
 import { demoConversation } from "./demo-conversation";
+import { renderProductLead } from "./render-product-lead";
 import { richConversation } from "./rich-conversation";
-import { Transcript } from "./transcript";
 
 const INSTALL =
   "npx shadcn@latest add https://whatsapp-components.crafter.run/r/whatsapp-kit.json";
@@ -33,8 +37,13 @@ export default function Page() {
       </header>
 
       <section className="mt-16">
-        <SectionTitle>The whole thing, in three themes</SectionTitle>
-        <div className="mt-6 flex flex-wrap justify-center gap-10">
+        <SectionTitle>Selling over WhatsApp, in three themes</SectionTitle>
+        <p className="mt-2 max-w-2xl text-[var(--page-muted)]">
+          One <code className="font-mono text-[13px]">ChatItem[]</code>, three
+          values of <code className="font-mono text-[13px]">data-wa-theme</code>
+          . Nothing below changes but the tokens.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-10">
           {whatsappThemeList.map((theme) => (
             <figure key={theme.id} className="flex flex-col items-center gap-3">
               <PhoneFrame width={304} ratio={1.95}>
@@ -50,7 +59,17 @@ export default function Page() {
                     }
                   />
                   <MessageList>
-                    <Transcript items={demoConversation} />
+                    <Conversation
+                      items={demoConversation}
+                      renderContent={renderProductLead}
+                    />
+                    <SystemMessage
+                      tone="neutral"
+                      icon={null}
+                      className="[&>span]:bg-wa-accent [&>span]:font-semibold [&>span]:text-wa-accent-text"
+                    >
+                      Venta cerrada
+                    </SystemMessage>
                     <MessageBubble direction="in" tail>
                       <TypingIndicator />
                     </MessageBubble>
@@ -60,7 +79,7 @@ export default function Page() {
               </PhoneFrame>
               <figcaption className="text-center">
                 <p className="text-sm font-medium">{theme.name}</p>
-                <p className="mt-0.5 text-xs text-[var(--page-muted)]">
+                <p className="mt-0.5 font-mono text-xs text-[var(--page-muted)]">
                   data-wa-theme=&quot;{theme.id}&quot;
                 </p>
               </figcaption>
@@ -82,15 +101,68 @@ export default function Page() {
             <ChatWindow
               key={theme}
               theme={theme}
-              className="h-[620px] overflow-hidden rounded-xl border border-[var(--page-border)]"
+              className="h-[640px] overflow-hidden rounded-xl border border-[var(--page-border)]"
             >
               <ChatHeader name="Camila" presence="typing" />
               <MessageList>
-                <Transcript items={richConversation} />
+                <Conversation items={richConversation} />
               </MessageList>
               <ChatInput placeholder="Escribe un mensaje" />
             </ChatWindow>
           ))}
+        </div>
+      </section>
+
+      <section className="mt-20">
+        <SectionTitle>Interactive</SectionTitle>
+        <p className="mt-2 max-w-2xl text-[var(--page-muted)]">
+          Quick replies, list messages, CTAs and polls. All controlled — no
+          component holds hidden state, so the transcript stays yours.
+        </p>
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          <ChatWindow
+            theme="light"
+            className="overflow-hidden rounded-xl border border-[var(--page-border)]"
+          >
+            <MessageList className="min-h-[340px] flex-none">
+              <Conversation items={interactiveItems} />
+              <QuickReplyButtons
+                direction="in"
+                actions={[
+                  { id: "size", label: "Ver tallas" },
+                  { id: "ship", label: "Costo de envío" },
+                  { id: "human", label: "Hablar con una persona" },
+                ]}
+              />
+            </MessageList>
+          </ChatWindow>
+
+          <ChatWindow
+            theme="dark"
+            className="overflow-hidden rounded-xl border border-[var(--page-border)]"
+          >
+            <MessageList className="min-h-[340px] flex-none">
+              <MessageBubble direction="in" tail>
+                <Poll
+                  question="¿Qué aroma lanzamos primero?"
+                  options={[
+                    { id: "a", label: "Violeta nocturna", votes: 42 },
+                    {
+                      id: "b",
+                      label: "Cítrico andino",
+                      votes: 27,
+                      votedByMe: true,
+                    },
+                    { id: "c", label: "Madera húmeda", votes: 11 },
+                  ]}
+                  labels={{
+                    single: "Elige una",
+                    votes: (n) => `${n} votos`,
+                  }}
+                />
+              </MessageBubble>
+            </MessageList>
+          </ChatWindow>
         </div>
       </section>
 
@@ -135,12 +207,51 @@ export default function Page() {
       </section>
 
       <footer className="mt-20 border-t border-[var(--page-border)] pt-6 text-sm text-[var(--page-muted)]">
-        Wave 1 — chat core. Rich content, commerce components and the playground
-        land next.
+        Wave 3 — every component is in. Per-component docs pages and the
+        conversation playground land next.
       </footer>
     </main>
   );
 }
+
+const interactiveItems: Parameters<typeof Conversation>[0]["items"] = [
+  {
+    kind: "message",
+    id: "i1",
+    direction: "out",
+    timestamp: new Date(2025, 0, 6, 11, 4),
+    status: "read",
+    content: {
+      type: "list",
+      title: "Catálogo Violeta",
+      body: "Estos son los formatos disponibles esta semana.",
+      buttonLabel: "Ver formatos",
+      sections: [
+        {
+          title: "Eau de parfum",
+          rows: [
+            { id: "30", title: "30 ml", description: "$ 42.000" },
+            { id: "50", title: "50 ml", description: "$ 65.000" },
+          ],
+        },
+        {
+          title: "Kits",
+          rows: [
+            { id: "kit", title: "Kit descubrimiento", description: "5 × 2 ml" },
+          ],
+        },
+      ],
+      footer: "Precios con IVA incluido.",
+    },
+  },
+  {
+    kind: "message",
+    id: "i2",
+    direction: "in",
+    timestamp: new Date(2025, 0, 6, 11, 6),
+    content: { type: "text", text: "¿Tienen el de 50 ml en stock?" },
+  },
+];
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (

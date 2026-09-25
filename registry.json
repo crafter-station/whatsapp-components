@@ -160,6 +160,36 @@
           "target": "@ui/whatsapp/reactions.tsx"
         },
         {
+          "path": "registry/whatsapp/conversation.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/conversation.tsx"
+        },
+        {
+          "path": "registry/whatsapp/product-card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/product-card.tsx"
+        },
+        {
+          "path": "registry/whatsapp/quick-reply-buttons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/quick-reply-buttons.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cta-button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/cta-button.tsx"
+        },
+        {
+          "path": "registry/whatsapp/list-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/list-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/poll.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/poll.tsx"
+        },
+        {
           "path": "LICENSE",
           "type": "registry:file",
           "target": "@ui/whatsapp/LICENSE"
@@ -1033,6 +1063,329 @@
           "path": "registry/whatsapp/cn.ts",
           "type": "registry:file",
           "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "product-card",
+      "type": "registry:component",
+      "title": "Product Card",
+      "description": "Thumbnail, title and price inside a bubble — the card that turns a chat into a storefront.",
+      "author": "Crafter Station",
+      "meta": {
+        "tags": ["whatsapp", "chat", "commerce", "product", "catalog"]
+      },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/product-card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/product-card.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "quick-reply-buttons",
+      "type": "registry:component",
+      "title": "Quick Reply Buttons",
+      "description": "The stack of reply chips that hangs under a message. Sibling of the bubble, not a child.",
+      "author": "Crafter Station",
+      "meta": {
+        "tags": ["whatsapp", "chat", "commerce", "buttons", "interactive"]
+      },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/quick-reply-buttons.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/quick-reply-buttons.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "cta-button",
+      "type": "registry:component",
+      "title": "CTA Button",
+      "description": "A call-to-action attached to the foot of a bubble: open a link, place a call, copy a code, or reply.",
+      "author": "Crafter Station",
+      "meta": {
+        "tags": ["whatsapp", "chat", "commerce", "buttons", "cta"]
+      },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/cta-button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/cta-button.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "list-message",
+      "type": "registry:component",
+      "title": "List Message",
+      "description": "A body with a list button that opens sectioned, selectable rows.",
+      "author": "Crafter Station",
+      "meta": {
+        "tags": ["whatsapp", "chat", "commerce", "list", "interactive"]
+      },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/list-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/list-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "poll",
+      "type": "registry:component",
+      "title": "Poll",
+      "description": "A question with vote bars, single or multiple choice.",
+      "author": "Crafter Station",
+      "meta": {
+        "tags": ["whatsapp", "chat", "poll", "vote", "interactive"]
+      },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/poll.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/poll.tsx"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/whatsapp.css",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/whatsapp.css"
+        },
+        {
+          "path": "LICENSE",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/LICENSE"
+        }
+      ]
+    },
+    {
+      "name": "conversation",
+      "type": "registry:block",
+      "title": "Conversation",
+      "description": "Renders a ChatItem[] with every content type handled. The declarative layer over the primitives, with a renderContent escape hatch.",
+      "author": "Crafter Station",
+      "meta": {
+        "tags": ["whatsapp", "chat", "declarative", "transcript"]
+      },
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/whatsapp/conversation.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/conversation.tsx"
+        },
+        {
+          "path": "registry/whatsapp/audio-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/audio-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cta-button.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/cta-button.tsx"
+        },
+        {
+          "path": "registry/whatsapp/date-divider.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/date-divider.tsx"
+        },
+        {
+          "path": "registry/whatsapp/document-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/document-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/image-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/image-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/link-preview.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/link-preview.tsx"
+        },
+        {
+          "path": "registry/whatsapp/list-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/list-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/location-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/location-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-bubble.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-bubble.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-group.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-meta.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-meta.tsx"
+        },
+        {
+          "path": "registry/whatsapp/message-ticks.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/message-ticks.tsx"
+        },
+        {
+          "path": "registry/whatsapp/poll.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/poll.tsx"
+        },
+        {
+          "path": "registry/whatsapp/product-card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/product-card.tsx"
+        },
+        {
+          "path": "registry/whatsapp/reactions.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/reactions.tsx"
+        },
+        {
+          "path": "registry/whatsapp/reply-quote.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/reply-quote.tsx"
+        },
+        {
+          "path": "registry/whatsapp/system-message.tsx",
+          "type": "registry:ui",
+          "target": "@ui/whatsapp/system-message.tsx"
+        },
+        {
+          "path": "registry/whatsapp/cn.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/cn.ts"
+        },
+        {
+          "path": "registry/whatsapp/types.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/types.ts"
+        },
+        {
+          "path": "registry/whatsapp/format-time.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/format-time.ts"
+        },
+        {
+          "path": "registry/whatsapp/format-media.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/format-media.ts"
+        },
+        {
+          "path": "registry/whatsapp/grouping.ts",
+          "type": "registry:file",
+          "target": "@ui/whatsapp/grouping.ts"
         },
         {
           "path": "registry/whatsapp/whatsapp.css",
