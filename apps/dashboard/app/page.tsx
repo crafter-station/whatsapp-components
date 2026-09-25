@@ -78,8 +78,12 @@ export default function Page() {
               className="flex min-w-0 max-w-full flex-col items-center gap-3"
             >
               <PhoneFrame width={304} ratio={1.95}>
-                <ChatWindow theme={theme.id} className="pt-6">
+                <ChatWindow theme={theme.id}>
                   <ChatHeader
+                    /* pt-9 clears the notch: the panel bleeds to the top
+                       edge as it does on a phone, instead of leaving a
+                       wallpaper-coloured strip above it. */
+                    className="pt-9"
                     name="Valeria · Agente IA"
                     presence="online"
                     presenceLabel="en línea"

@@ -8,8 +8,8 @@ export default function Demo() {
   return (
     <div className="flex flex-wrap justify-center gap-8 [&>*]:min-w-0 [&>*]:max-w-full">
       <PhoneFrame width={260} ratio={1.9}>
-        <ChatWindow className="pt-6">
-          <ChatHeader name="Valeria" presence="online" />
+        <ChatWindow>
+          <ChatHeader className="pt-9" name="Valeria" presence="online" />
           <MessageList>
             <MessageBubble direction="in">Con notch</MessageBubble>
           </MessageList>

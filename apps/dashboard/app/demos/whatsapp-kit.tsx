@@ -11,8 +11,9 @@ export default function Demo() {
   return (
     <div className="flex justify-center">
       <PhoneFrame width={300} ratio={1.95}>
-        <ChatWindow className="pt-6">
+        <ChatWindow>
           <ChatHeader
+            className="pt-9"
             name="Valeria · Agente IA"
             presence="online"
             presenceLabel="en línea"
